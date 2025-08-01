@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Substitute</title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: url(Dunau\ sama\ gunung.jpg) no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        gap: 30px;
+        padding-top: 40px;
+    }
+
+    /* Biar bening */
+    .container, .table-container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 30px 40px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+        
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: white;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    h2 {
+        text-align: center;
+        color: white;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 16px;
+    }
+
+    input::placeholder {
+        color: #ddd;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #e60000;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    button:hover {
+        background-color: white;
+    }
+
+    .table-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: white;
+    width: 90%;
+    max-width: 400px;
+    overflow: hidden; /* Buat Motong isi tabel yang keluar */
+    }
+
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    table-layout: fixed; /* Buat perboden table yang keluar */
+    word-wrap: break-word; /* Kalo text panjang didalem */
+    }
+
+    th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    word-break: break-word; /* Buat text panjang ambil ke bawah */
+    overflow-wrap: break-word;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Neville Rajwa Register</h2>
+        <form id="registerForm">
+            <input required type="text" id="nama" placeholder="Nama lengkap"/><br>
+            <input required type="email" id="email" placeholder="Email"/><br>
+            <input required type="password" id="password" placeholder="Password"/><br>
+            <input required type="number" id="nomorhandphone" placeholder="Nomor Hp"/><br>
+            <input required type="date" id="date" placeholder="Tanggal Lahir"/><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table id="datatable">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Nomor Hp</th>
+                    <th>Tanggal Lahir</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault(); 
+
+            const nama = document.getElementById("nama").value;
+            const email = document.getElementById("email").value;
+            const nomorhandphone = document.getElementById("nomorhandphone").value;
+            const date = document.getElementById("date").value;
+
+            const tableBody = document.getElementById("datatable").getElementsByTagName("tbody")[0];
+
+            const newRow = tableBody.insertRow();
+            newRow.insertCell(0).textContent = nama;
+            newRow.insertCell(1).textContent = email;
+            newRow.insertCell(2).textContent = nomorhandphone;
+            newRow.insertCell(3).textContent = date;
+
+            document.getElementById("registerForm").reset();
+        });
+    </script>
+</body>
+</html>
